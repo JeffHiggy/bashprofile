@@ -1,0 +1,38 @@
+#!/bin/bash
+#Prepare welcome message vars
+let upSeconds="$(/usr/bin/cut -d. -f1 /proc/uptime)"
+let secs=$((${upSeconds}%60))
+let mins=$((${upSeconds}/60%60))
+let hours=$((${upSeconds}/3600%24))
+let days=$((${upSeconds}/86400))
+UPTIME=`printf "%d days, %02dh%02dm%02ds" "$days" "$hours" "$mins" "$secs"`
+
+#Load External Files
+. ~/.dotfiles/release.sh
+. ~/.dotfiles/services.sh
+
+#Build welcome mesasge
+welcomemsg="$(tput sgr0)$(tput setaf 2)
+`date +"%A, %e %B %Y, %r"`
+Connecting from: ${SSH_CONNECTION}$(tput setaf 1)
+
+$(tput setaf 1)SYSTEM.......:$(tput setaf 6) `hostname -f`"
+
+if [ ! -z "$release" ];
+then
+  welcomemsg="$welcomemsg\n$(tput setaf 1)Distro.......:$(tput setaf 6) $release"
+fi
+
+welcomemsg="$welcomemsg
+$(tput setaf 1)Uptime.......:$(tput setaf 6) ${UPTIME}
+$(tput setaf 1)IP Addresses.:$(tput setaf 6) `ip a | grep "scope global" | grep "inet 192" | grep -Po '(?<=inet )[\d./]+'`$(tput setaf 1)"
+
+if [ ! -z "$services" ];
+then
+  welcomemsg="$welcomemsg\n$(tput setaf 1)Services.....:$(tput setaf 6) ${services}"
+fi
+
+welcomemsg="$welcomemsg\n$(tput sgr0)\n"
+
+#Echo welcome message
+printf "$welcomemsg"

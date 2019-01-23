@@ -1,0 +1,18 @@
+#!/bin/bash
+#Defines aliases
+
+alias temp='/opt/vc/bin/vcgencmd measure_temp'
+
+#ls aliases
+alias ls='ls --color=auto'
+alias ll='ls -lF --color=auto'
+alias la='ls -A --color=auto'
+alias lla='ls -alF --color=auto'
+
+#Other Aliases
+alias extip='curl ipinfo.io/ip'
+
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+alias grepfind='grep --color=auto -rnw'
