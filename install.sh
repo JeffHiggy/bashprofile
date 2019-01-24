@@ -4,7 +4,7 @@
 # Backup existing bash profile if exist
 
 if [ -f ~/.bashrc ] || [ -f ~/.bash_profile ] || [ -d ~/.dotfiles ]; then
-	mkdir ~/.bashrc ~/.oldbashprofile
+	mkdir ~/.oldbashprofile
 fi
 
 if [ -f ~/.bashrc ]; then
