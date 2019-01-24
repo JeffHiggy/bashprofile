@@ -9,10 +9,17 @@ case $- in
 esac
 
 if [ -d "$HOME/.dotfiles" ]; then
-	for DOTFILE in `find $HOME/.dotfiles`
+	for DOTFILE in `find $HOME/.dotfiles/`
 	do
 	  [ -f "$DOTFILE" ] && source "$DOTFILE"
 	done
+fi
+
+if [ -d "$HOME/.localdotfiles" ]; then
+        for DOTFILE in `find $HOME/.localdotfiles/`
+        do
+          [ -f "$DOTFILE" ] && source "$DOTFILE"
+        done
 fi
 
 # If this is an xterm set the title to user@host:dir

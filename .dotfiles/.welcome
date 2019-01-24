@@ -8,8 +8,8 @@ let days=$((${upSeconds}/86400))
 UPTIME=`printf "%d days, %02dh%02dm%02ds" "$days" "$hours" "$mins" "$secs"`
 
 #Load External Files
-. ~/.dotfiles/release.sh
-. ~/.dotfiles/services.sh
+if [ -f ~/.localdotfiles/release.sh ]; then . ~/.localdotfiles/release.sh; fi
+if [ -f ~/.localdotfiles/services.sh ]; then . ~/.localdotfiles/services.sh; fi
 
 #Build welcome mesasge
 welcomemsg="$(tput sgr0)$(tput setaf 2)
