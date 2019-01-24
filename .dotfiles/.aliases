@@ -1,8 +1,6 @@
 #!/bin/bash
 #Defines aliases
 
-alias temp='/opt/vc/bin/vcgencmd measure_temp'
-
 #ls aliases
 alias ls='ls --color=auto'
 alias ll='ls -lF --color=auto'
