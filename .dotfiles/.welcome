@@ -19,7 +19,7 @@ Connecting from: ${SSH_CONNECTION}$(tput setaf 1)
 $(tput setaf 1)SYSTEM.......:$(tput setaf 6) `hostname -f`
 $(tput setaf 1)Distro.......:$(tput setaf 6) $(lsb_release -ds)
 $(tput setaf 1)Uptime.......:$(tput setaf 6) ${UPTIME}
-$(tput setaf 1)IP Addresses.:$(tput setaf 6) `ip a | grep "scope global" | grep "inet 192" | grep -Po '(?<=inet )[\d./]+'`$(tput setaf 1)"
+$(tput setaf 1)IP Addresses.:$(tput setaf 6) `ip a | grep "scope global" | grep "inet \(?:192\|172\|10\)." | grep -Po '(?<=inet )[\d./]+'`$(tput setaf 1)"
 
 if [ ! -z "$services" ];
 then
