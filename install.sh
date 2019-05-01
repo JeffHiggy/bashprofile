@@ -1,5 +1,5 @@
 ## Install.sh
-# This will install the links to the bashprofile
+# This will install the links to the bashprofile when the profile is pulled from git to the ~/.bashprofile folder
 
 # Backup existing bash profile if exist
 
